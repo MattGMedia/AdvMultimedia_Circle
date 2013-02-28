@@ -1,0 +1,195 @@
+import ddf.minim.*;
+
+
+
+
+Minim minim;
+
+AudioInput in;
+
+
+
+
+PShape s;
+
+
+
+
+//int brisk = (in.mix.get(500)*50);
+ 
+void setup()
+
+{
+
+ 
+
+  size(600, 600, P3D);
+
+
+
+
+  minim = new Minim(this);
+
+  minim.debugOn();
+
+  
+
+  // get a line in from Minim, default bit depth is 16
+ 
+  in = minim.getLineIn(Minim.STEREO, 512);
+
+  
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void draw()
+
+{
+
+  background(255);
+ 
+  stroke(65,131,196);
+
+
+
+
+  // draw the waveforms
+
+  for(int i = 0; i < in.bufferSize() - 1; i++)
+
+  {
+
+    //original voice code
+
+    //line(i, 50 + in.left.get(i)*50, i+1, 50 + in.left.get(i+1)*50);
+ 
+    //line(i, 150 + in.right.get(i)*50, i+1, 150 + in.right.get(i+1)*50);
+
+    
+
+    //this is for the elipse
+
+    //this is the elipse and the audio input making it expand
+
+    //ellipse(300,300,100,150 + in.mix.get(20)*50-  50 + in.mix.get(50+1)*50);
+ 
+    //fill(65,131,196,255);
+
+    //noStroke();
+
+    
+
+// this is for the 3d object
+
+//pushMatrix();
+
+//translate(300, height*0.55, -1900 + in.mix.get(500)*50-  50 + in.mix.get(50+1)*7000);
+ 
+//fill(65,131,height*0.55 -1900 + in.mix.get(500)*50,255);
+
+//noStroke();
+
+//sphere(100);
+
+//popMatrix();
+
+
+
+
+
+
+
+  }
+
+
+
+
+   println(in.mix.get(500)*50);
+ 
+   
+
+   
+
+ 
+
+  if (in.mix.get(500)*50 > 20) {
+
+    fill(255,0,0);
+
+  } else {
+
+    
+
+    fill(0,255,0);
+
+  }
+
+  pushMatrix();
+
+ translate(300, height*0.55, -900 + in.mix.get(500)*500-  50 + in.mix.get(50+1)*5000);
+
+
+
+
+noStroke();
+
+sphere(100);
+
+popMatrix();
+
+   //if(in.mix.get(500)*50- 50 + in.mix.get(50+1)*7000 > .4){
+ 
+   //fill(255,255,255,255);
+
+    }
+
+      // ellipse(50,50,50,50 + in.left.get(30)*50-  50 + in.left.get(30+1)*50);
+
+   // println("Blow out the candle");
+
+
+
+
+ 
+
+
+
+
+
+void stop()
+
+{
+
+  // always close Minim audio classes when you are done with them
+
+  in.close();
+
+  minim.stop();
+
+  
+
+  super.stop();
+ 
+}
+
+//Window size: x 
+
+//Viewport size: x
